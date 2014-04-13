@@ -1,29 +1,16 @@
 #!/usr/bin/python
-import math
-primes = [2,3]
-number = 600851475143
-#Checks if prime in our growing list of primes
-def isPrime(x):
-	for i in primes:
-		if x % i == 0:
-			return False
-	return True
 
-#Adds the next prime number to our list
-def nextPrime():
-	nextNum = primes[-1]
-	while 1==1:
-		nextNum += 2
-		if isPrime(nextNum):
-			primes.append(nextNum)
-			return
+def primes(goal):
+        factors = [2]
+        factor = 3
+        while goal % 2 == 0:
+                goal /= 2
 
-#finding the largets prime factor
-while number % 2 ==0:
-	number /= 2
-while number >1:
-	if number % primes[-1] == 0:
-		number /= primes[-1]
-	else:
-		nextPrime()
-print primes[-1]
+        while goal > 1:
+                if goal % factor == 0:
+                        goal /= factor
+                        factors.append(factor)
+                factor += 2
+        return factors[-1]
+
+print primes(600851475143)
